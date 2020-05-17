@@ -2,6 +2,8 @@ import { h } from "preact";
 import { PureComponent } from "preact/compat";
 import { AwesomeButtonProgress } from "react-awesome-button";
 
+import generateRandomValue from "./random";
+
 interface State {
   value: number | null;
 }
@@ -13,16 +15,16 @@ export default class App extends PureComponent<{}, State> {
   }
 
   onPress = (_, done) => {
+    this.setState({
+      value: generateRandomValue(0, 10)
+    });
     setTimeout(() => {
       done();
-      this.setState({
-        value: 9000
-      });
-    }, 5000);
+    }, 50);
   };
 
   render() {
-    const displayingValue = this.state.value || "Press the button";
+    const displayingValue = this.state.value === null ? "Press the button" : this.state.value;
     return (
       <div>
         <h2>{displayingValue}</h2>
@@ -33,7 +35,7 @@ export default class App extends PureComponent<{}, State> {
           loadingLabel="Generating..."
           onPress={this.onPress}
         >
-          Generate {this.state.value && "another"}
+          Generate
         </AwesomeButtonProgress>
       </div>
     );
