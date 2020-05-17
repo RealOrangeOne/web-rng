@@ -1,18 +1,12 @@
-function getArrayType(size: number) {
-  if (size <= 2 ** 8) {
-    return Uint8Array;
-  } else if (size <= 2 ** 16) {
-    return Uint16Array;
-  }
-  return Uint32Array;
-}
+const RAND_MAX = 2 ** 32;
 
-export default function generateRandomValue(min, max): number {
+export default function generateRandomValue(min: number, max: number): number {
   const sampleSize = max - min + 1;
-  const arrayType = getArrayType(sampleSize);
-  let randomValue;
+  const upper = RAND_MAX - (RAND_MAX % sampleSize);
+  let randomValue: number;
   do {
-    randomValue = window.crypto.getRandomValues(new arrayType(1))[0];
-  } while (randomValue > sampleSize);
+    randomValue = window.crypto.getRandomValues(new Uint32Array(1))[0];
+  } while (randomValue >= upper);
+  randomValue %= sampleSize;
   return min + randomValue;
 }
