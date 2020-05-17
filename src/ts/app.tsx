@@ -1,6 +1,6 @@
 import { h } from "preact";
 import { PureComponent } from "preact/compat";
-import { AwesomeButton } from "react-awesome-button";
+import { AwesomeButtonProgress } from "react-awesome-button";
 
 interface State {
   value: number | null;
@@ -12,10 +12,13 @@ export default class App extends PureComponent<{}, State> {
     this.state = { value: null };
   }
 
-  onPress = () => {
-    this.setState({
-      value: 9000
-    });
+  onPress = (_, done) => {
+    setTimeout(() => {
+      done();
+      this.setState({
+        value: 9000
+      });
+    }, 5000);
   };
 
   render() {
@@ -23,14 +26,15 @@ export default class App extends PureComponent<{}, State> {
     return (
       <div>
         <h2>{displayingValue}</h2>
-        <AwesomeButton
+        <AwesomeButtonProgress
           ripple
           type="primary"
           size="large"
+          loadingLabel="Generating..."
           onPress={this.onPress}
         >
           Generate {this.state.value && "another"}
-        </AwesomeButton>
+        </AwesomeButtonProgress>
       </div>
     );
   }
