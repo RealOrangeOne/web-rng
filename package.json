@@ -4,8 +4,8 @@
   "private": true,
   "description": "",
   "scripts": {
-    "build": "parcel build src/index.html",
-    "start": "parcel src/index.html"
+    "build": "parcel build --no-autoinstall src/index.html",
+    "start": "parcel serve --no-autoinstall src/index.html"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/RealOrangeOne/web-rng#readme",
   "dependencies": {
-    "parcel-bundler": "1.12.4"
+    "parcel-bundler": "1.12.4",
+    "preact": "10.4.1",
+    "typescript": "3.9.2"
   }
 }
