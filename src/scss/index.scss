@@ -1,2 +1,30 @@
 @import "node_modules/react-awesome-button/src/styles/styles.scss";
 @import "node_modules/react-awesome-button/src/styles/themes/theme-red/styles.scss";
+
+$black: #000;
+$white: #FFF;
+
+main {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  & > h1 {
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+  }
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background-color: $black;
+  min-height: 100vh;
+  color: $white;
+
+  font-family: "Roboto Mono";
+}
