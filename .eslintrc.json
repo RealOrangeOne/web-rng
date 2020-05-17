@@ -1,0 +1,9 @@
+{
+  "extends": [
+    "dabapps/commonjs",
+    "dabapps/browser",
+    "dabapps/typescript",
+    "plugin:prettier/recommended",
+    "preact"
+  ]
+}

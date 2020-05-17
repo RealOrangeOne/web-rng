@@ -5,7 +5,9 @@
   "description": "",
   "scripts": {
     "build": "parcel build --no-autoinstall src/index.html",
-    "start": "parcel serve --no-autoinstall src/index.html"
+    "start": "parcel serve --no-autoinstall src/index.html",
+    "lint": "eslint src/ts/*",
+    "test": "npm run lint"
   },
   "repository": {
     "type": "git",
@@ -20,5 +22,9 @@
     "parcel-bundler": "1.12.4",
     "preact": "10.4.1",
     "typescript": "3.9.2"
+  },
+  "devDependencies": {
+    "eslint-config-dabapps": "6.0.4",
+    "eslint-config-preact": "1.1.1"
   }
 }
