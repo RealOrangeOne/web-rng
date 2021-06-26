@@ -11,26 +11,11 @@ jobs:
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
-
-      - uses: actions/setup-node@v2
         with:
-          node-version: '14'
+            fetch-depth: 0
 
-      - uses: actions/cache@v2
+      - name: Push to dokku
+        uses: dokku/github-action@master
         with:
-          path: ~/.npm
-          key: node-${{ hashFiles('package-lock.json') }}
-
-      - run: npm ci
-      - run: npm run build
-
-      - name: rclone
-        uses: wei/rclone@master
-        with:
-          args: sync public/ pages:rng.theorangeone.net/
-        env:
-          RCLONE_CONFIG_PAGES_TYPE: webdav
-          RCLONE_CONFIG_PAGES_URL: https://pages.theorangeone.net
-          RCLONE_CONFIG_PAGES_USER: github
-          RCLONE_CONFIG_PAGES_PASS: ${{ secrets.RCLONE_WEBDAV_PASSWORD }}
-
+          git_remote_url: 'ssh://dokku@d.theorangeone.net:7743/web-rng'
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
