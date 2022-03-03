@@ -39,4 +39,4 @@ jobs:
         with:
           push: true
           tags: |
-            theorangeone/web-rng:${{ github.ref }}
+            theorangeone/web-rng:latest
