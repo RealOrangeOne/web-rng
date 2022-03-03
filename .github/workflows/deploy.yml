@@ -39,4 +39,4 @@ jobs:
         with:
           push: true
           tags: |
-            theorangeone/web-rng:latest
+            ghcr.io/theorangeone/web-rng:latest
