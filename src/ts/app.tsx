@@ -8,7 +8,7 @@ interface State {
   value: number | null;
 }
 
-export default class App extends PureComponent<{}, State> {
+export default class App extends PureComponent<Record<string, never>, State> {
   constructor() {
     super();
     this.state = { value: null };

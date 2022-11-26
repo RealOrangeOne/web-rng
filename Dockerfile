@@ -12,4 +12,4 @@ RUN npm run build
 
 FROM theorangeone/website-server:latest
 
-COPY --from=build --chown=1000 /app/public /srv
+COPY --from=build --chown=1000 /app/dist /srv
